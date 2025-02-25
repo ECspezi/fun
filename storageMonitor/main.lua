@@ -13,13 +13,15 @@ while true do
 
     -- getting all data
     Monitor, SizeX, SizeY, MonitorCenterY = GetMonitors()
-    TotalVolume, TotalBusy, Percent = GetChestsData()
+    if Monitor == nil then return
+    else
+        TotalVolume, TotalBusy, Percent = GetChestsData()
 
-    -- drawing on monitor
-    Background = DrawBackground(Monitor, SizeX, SizeY)
-    -- print(TotalVolume, TotalBusy)
-    DrawProgressBar(Background, SizeX, MonitorCenterY, Percent)
-    DrawPercentage(Background, SizeX, MonitorCenterY, Percent)
-
+        -- drawing on monitor
+        Background = DrawBackground(Monitor, SizeX, SizeY)
+        -- print(TotalVolume, TotalBusy)
+        DrawProgressBar(Background, SizeX, MonitorCenterY, Percent)
+        DrawPercentage(Background, SizeX, MonitorCenterY, Percent)
+    end
     sleep(1)
 end
