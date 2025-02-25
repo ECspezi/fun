@@ -7,6 +7,8 @@ local DrawBackground = require("DrawBackground")
 local DrawProgressBar = require("DrawProgressBar")
 local DrawPercentage = require("DrawPercentage")
 
+print("Welcome to the storageMonitor v1!\n")
+
 while true do
 
     -- getting all data
