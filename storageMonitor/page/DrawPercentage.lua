@@ -4,7 +4,9 @@ function DrawPercentage(Background, SizeX, MonitorCenterY, Percent)
     progressText.setBackgroundColour(colours.white)
     progressText.setTextColour(colours.black)
     progressText.clear()
-    progressText.write("Filled: " .. Percent .. "%")
+    if Percent ~= Percent then progressText.write("No chests found")
+    else progressText.write("Filled: " .. Percent .. "%") end
+    
 
 end
 
