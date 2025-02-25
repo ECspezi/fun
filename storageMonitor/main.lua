@@ -13,7 +13,7 @@ while true do
 
     -- getting all data
     Monitor, SizeX, SizeY, MonitorCenterY = GetMonitors()
-    if Monitor == nil then return
+    if Monitor == nil then print("Beda")
     else
         TotalVolume, TotalBusy, Percent = GetChestsData()
 
