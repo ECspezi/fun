@@ -10,7 +10,7 @@ function GetChestsData()
     end
 
     local Percent = math.ceil((TotalBusy / TotalVolume) * 100)
-
+    if Percent ~= Percent then print("No inventories found! Connect via peripherals.") end
     return TotalVolume, TotalBusy, Percent
 
 end
