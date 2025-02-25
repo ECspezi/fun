@@ -3,11 +3,11 @@ function GetMonitors()
     Monitor = peripheral.find("monitor")
     if not Monitor then
         print("Error: monitor not found")
-    end
-
+    else
     SizeX, SizeY = Monitor.getSize()
     MonitorCenterY = math.ceil(SizeY / 2)
-    return Monitor,SizeX, SizeY, MonitorCenterY
+    end
+    return Monitor, SizeX, SizeY, MonitorCenterY
     -- print(SizeX, SizeY)
 end
 
