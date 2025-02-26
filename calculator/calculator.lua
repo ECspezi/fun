@@ -1,18 +1,58 @@
-local basalt = require("basalt") --> Load the Basalt framework into the variable called "basalt"
+local basalt = require("basalt")
 
---> Now we want to create a base frame, we call the variable "main" - by default everything you create is visible. (you don't need to use :show())
 local main = basalt.createFrame()
 
-local button = main:addButton() --> Here we add our first button
-button:setPosition(4, 4) -- We want to change the default position of our button
-button:setSize(16, 3) -- And the default size.
-button:setText("Click me!") --> This method sets the text displayed on our button
+local button1 = main:addButton()
+    :setText("1")
+    :setSize(9, 3)
+    :setBackground(colors.white)
+    :setPosition(2, 6)
+    
+local buttonErase = main:addButton()
+    :setText("Erase")
+    :setSize(9, 3)
+    :setBackground(colors.gray)
+    :setPosition(42, 6)
 
-local function buttonClick() --> Create a function we want to call when the button gets clicked 
-    basalt.debug("I got clicked!")
+function release()
+    basalt.debug("Release")
+    button1:setBackground(colors.white)
 end
 
--- Now we just need to register the function to the button's onClick event handlers, this is how we can achieve that:
-button:onClick(buttonClick)
+button1:onRelease(release)
 
-basalt.autoUpdate() -- As soon as we call basalt.autoUpdate, the event and draw handlers will listen to any incoming events (and draw if necessary)
+local inputFrame = main:addFrame()
+   :setSize (49, 3)
+   :setPosition (2, 2)
+   :setBackground(colors.black)
+
+local input = ""
+
+local inputText = inputFrame:addLabel()
+    :setText("Input, please")
+    :setFontSize(1)
+    :setForeground(colors.gray)
+    :setBackground(colors.black)
+    :setPosition(2, 2)
+    
+function click(self, button, x, y)
+    basalt.debug("click")
+    input = input .. "1"
+    inputText:setText(input)
+    inputText:setForeground(colors.white)
+    buttonErase:setBackground(colors.white)
+    button1:setBackground(colors.gray)
+end
+
+function erase()
+    basalt.debug("erase click")
+    input = ""
+    inputText:setText("Input, please")
+    inputText:setForeground(colors.gray)
+    buttonErase:setBackground(colors.gray)
+end
+
+button1:onClick(click)
+buttonErase:onClick(erase)
+    
+basalt.autoUpdate()
