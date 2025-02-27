@@ -2,8 +2,6 @@ local basalt = require("basalt")
 
 
 function Front()
-    local main = basalt.createFrame()
-        :setBackground(colors.black)
 
     local button1 = main:addButton()
         :setText("1")
@@ -116,12 +114,6 @@ function Front()
         :setBackground(colors.orange)
         :setForeground(colors.white)
         :setPosition(20, 4)
-
-    local inputLabel = main:addLabel()
-        :setText("Input")
-        :setFontSize(1)
-        :setForeground(colors.white)
-        :setPosition(2, 2)
     
     return button1, button2, button3, button4, button5, button6, button7, button8, button9, buttonEquals, buttonAC, button0, buttonPlus, buttonMinus, buttonMultiply, buttonDivision
     
