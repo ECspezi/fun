@@ -32,14 +32,11 @@ local startX, startY = 2, 8
 for i = 1, 9 do
     if i > 3 and i <= 6 then startY = 12 end
     if i > 6 then startY = 16 end
-    main:addButton("numberButton" .. i)
+    local button = main:addButton("numberButton" .. i)
         :setText(tostring(i))
         :setSize(5, 3)
         :setPosition(startX, startY)
-        :setText(tostring(i))
-        :onClick(function(self)
-            numberButtonClick(self, i)
-        end)
+        button:onClick(function(button) numberButtonClick(button, i) end)
     
     startX = startX + 6
     if startX > 14 then startX = 2 end
