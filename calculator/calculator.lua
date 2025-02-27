@@ -18,9 +18,11 @@ local buttons = Buttons(main)
 for key, button in pairs(buttons) do
     button:onClick(function()
         buttonClick(button)
+        if button:getText() == "C" then input = ""
+        else
         input = input .. buttonClick(button)
         inputLabel:setText(input)
-        if button:getText() == "C" then input = "" end
+        end
     end)
 end
 
