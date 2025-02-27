@@ -6,20 +6,19 @@ local buttonRelease = require("buttonRelease")
 local main = basalt.createFrame()
     :setBackground(colors.black)
 
+local input = ""
 local inputLabel = main:addLabel()
-    :setText("Input")
+    :setText(input)
     :setFontSize(1)
     :setForeground(colors.white)
     :setPosition(2, 2)
 
 local buttons = Buttons(main)
 
-
-local input = ""
-
 for key, button in pairs(buttons) do
-    button:onClick(function() 
-        input = input + buttonClick(button)
+    button:onClick(function()
+        buttonClick(button)
+        input = input .. buttonClick(button)
     end)
 end
 
