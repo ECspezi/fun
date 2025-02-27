@@ -19,20 +19,24 @@ local function clearCalculator()
     lastNumber = 0
 end
 
+local inputLabel = main:addLabel()
+    :setPosition(2, 2)
+    :setText(input)
+
 local startX, startY = 2, 8
 for i = 1, 9 do
-    local startX, startY = 2, 8
-    if i >= 3 and i < 6 then startY = 12 end
-    if i >= 6 then startY = 16 end
-    main:addButton("numberButton" .. i)
+    if i > 3 and i <= 6 then startY = 12 end
+    if i > 6 then startY = 16 end
+    Button = main:addButton("numberButton" .. i)
         :setText(tostring(i))
         :setSize(5, 3)
         :setPosition(startX, startY)
         :setText(tostring(i))
-        :onClick(function()
-            basalt.debug("Button " .. i .. " clicked")
+        :onClick(function(Button)
+            input = input .. tostring(i)
+            Button:setBackgroung(colors.white)
         end)
-    startX = startX + 5
+    startX = startX + 6
     if startX > 14 then startX = 2 end
 end
 
