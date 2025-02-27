@@ -70,9 +70,12 @@ for key, button in pairs(buttons) do
                 end
             else
             input = input .. buttonClick(button)
+            inputLabel:setText(input)
             end
-        else input = input .. buttonClick(button) end
-        inputLabel:setText(input)
+        else input = input .. buttonClick(button)
+            inputLabel:setText(input)
+         end
+
     end)
 end
 
