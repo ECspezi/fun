@@ -23,20 +23,22 @@ local inputLabel = main:addLabel()
     :setPosition(2, 2)
     :setText(input)
 
-function numberButtonClick(button, i)
-    button:setBackgroung(colors.white)
-    input = input .. tostring(i)
-end
-
 local startX, startY = 2, 8
 for i = 1, 9 do
     if i > 3 and i <= 6 then startY = 12 end
     if i > 6 then startY = 16 end
     local button = main:addButton("numberButton" .. i)
-        :setText(tostring(i))
+    
+    button:setText(tostring(i))
         :setSize(5, 3)
         :setPosition(startX, startY)
-        button:onClick(function(button) numberButtonClick(button, i) end)
+        :onClick(function() 
+            button:setBackground(colors.white)
+            input = input .. tostring(i)
+        end)
+        :onRelease(function()
+            button:setBackground(colors.gray)
+        end)
     
     startX = startX + 6
     if startX > 14 then startX = 2 end
