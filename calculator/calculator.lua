@@ -15,16 +15,52 @@ local inputLabel = main:addLabel()
 
 local buttons = Buttons(main)
 
+local firstNumber = 0
+local operation = ""
+
 for key, button in pairs(buttons) do
     button:onClick(function()
         buttonClick(button)
-        if button:getText() == "C" then 
+        local text = button:getText()
+        if text == "C" then 
             input = ""
-            inputLabel:setText(input)
-        else
+        elseif text == "+" then
+            firstNumber = firstNumber + tonumber(input)
+            input = ""
+            operation = "plus"
+        elseif text == "-" then
+            firstNumber = firstNumber + tonumber(input)
+            input = ""
+            operation = "minus"
+        elseif text == "*" then
+            firstNumber = firstNumber + tonumber(input)
+            input = ""
+            operation = "multiply"
+        elseif text == "*" then
+            firstNumber = firstNumber + tonumber(input)
+            input = ""
+            operation = "divide"
+        elseif text == "=" then
+            if operation == "plus" then
+                Result = tonumber(input) + firstNumber
+                firstNumber = 0
+                input = tostring(Result)
+            elseif operation == "minus" then
+                Result = firstNumber - tonumber(input)
+                firstNumber = 0
+                input = tostring(Result)
+            elseif operation == "multiply" then
+                Result = firstNumber * tonumber(input)
+                firstNumber = 0
+                input = tostring(Result)
+            elseif operation == "divide" then
+                Result = firstNumber / tonumber(input)
+                firstNumber = 0
+                input = tostring(Result)
+            end
         input = input .. buttonClick(button)
-        inputLabel:setText(input)
         end
+        inputLabel:setText(input)
     end)
 end
 
