@@ -19,6 +19,8 @@ for key, button in pairs(buttons) do
     button:onClick(function()
         buttonClick(button)
         input = input .. buttonClick(button)
+        inputLabel:setText(input)
+        if input == "" then input = "" end
     end)
 end
 
