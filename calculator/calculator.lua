@@ -25,31 +25,22 @@ for key, button in pairs(buttons) do
         if input ~= "" then
             if text == "C" then 
                 input = ""
-                firstNumber = 0
             elseif text == "+" then
                 firstNumber = firstNumber + tonumber(input)
                 input = ""
                 operation = "plus"
-                inputLabel:setText(firstNumber)
-                inputLabel:setForeground(colours.lightGrey)
             elseif text == "-" then
                 firstNumber = firstNumber + tonumber(input)
                 input = ""
                 operation = "minus"
-                inputLabel:setText(firstNumber)
-                inputLabel:setForeground(colours.lightGrey)
             elseif text == "*" then
                 firstNumber = firstNumber + tonumber(input)
                 input = ""
                 operation = "multiply"
-                inputLabel:setText(firstNumber)
-                inputLabel:setForeground(colours.lightGrey)
             elseif text == "/" then
                 firstNumber = firstNumber + tonumber(input)
                 input = ""
                 operation = "divide"
-                inputLabel:setText(firstNumber)
-                inputLabel:setForeground(colours.lightGrey)
             elseif text == "=" then
                 if operation == "plus" then
                     Result = tonumber(input) + firstNumber
@@ -70,12 +61,9 @@ for key, button in pairs(buttons) do
                 end
             else
             input = input .. buttonClick(button)
-            inputLabel:setText(input)
             end
-        else input = input .. buttonClick(button)
-            inputLabel:setText(input)
-         end
-
+        else input = input .. buttonClick(button) end
+        inputLabel:setText(input)
     end)
 end
 
