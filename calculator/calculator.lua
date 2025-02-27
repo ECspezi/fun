@@ -16,8 +16,10 @@ local function numberButtonOnClick(button)
     button:setBackground(colors.lightGray)
 end
 
-for key, value in ipairs(buttons) do
-    basalt.debug(key, value)
+for key, value in pairs(buttons) do
+    for key2, value2 in pairs(value) do
+        print(key2, value2)
+    end
     value:onClick(function() numberButtonOnClick(value) end)
 end
 
