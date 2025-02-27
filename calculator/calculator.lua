@@ -19,13 +19,13 @@ local input = ""
 
 for key, button in pairs(buttons) do
     button:onClick(function() 
-        buttonClick(button) 
+        input = input + buttonClick(button)
     end)
 end
 
 for key, button in pairs(buttons) do
     button:onRelease(function() 
-        input = input + buttonRelease(button)
+        buttonRelease(button)
     end)
 end
 
