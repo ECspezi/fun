@@ -22,44 +22,47 @@ for key, button in pairs(buttons) do
     button:onClick(function()
         buttonClick(button)
         local text = button:getText()
-        if text == "C" then 
-            input = ""
-        elseif text == "+" then
-            firstNumber = firstNumber + tonumber(input)
-            input = ""
-            operation = "plus"
-        elseif text == "-" then
-            firstNumber = firstNumber + tonumber(input)
-            input = ""
-            operation = "minus"
-        elseif text == "*" then
-            firstNumber = firstNumber + tonumber(input)
-            input = ""
-            operation = "multiply"
-        elseif text == "*" then
-            firstNumber = firstNumber + tonumber(input)
-            input = ""
-            operation = "divide"
-        elseif text == "=" then
-            if operation == "plus" then
-                Result = tonumber(input) + firstNumber
-                firstNumber = 0
-                input = tostring(Result)
-            elseif operation == "minus" then
-                Result = firstNumber - tonumber(input)
-                firstNumber = 0
-                input = tostring(Result)
-            elseif operation == "multiply" then
-                Result = firstNumber * tonumber(input)
-                firstNumber = 0
-                input = tostring(Result)
-            elseif operation == "divide" then
-                Result = firstNumber / tonumber(input)
-                firstNumber = 0
-                input = tostring(Result)
+        if input ~= "" then
+            if text == "C" then 
+                input = ""
+            elseif text == "+" then
+                firstNumber = firstNumber + tonumber(input)
+                input = ""
+                operation = "plus"
+            elseif text == "-" then
+                firstNumber = firstNumber + tonumber(input)
+                input = ""
+                operation = "minus"
+            elseif text == "*" then
+                firstNumber = firstNumber + tonumber(input)
+                input = ""
+                operation = "multiply"
+            elseif text == "/" then
+                firstNumber = firstNumber + tonumber(input)
+                input = ""
+                operation = "divide"
+            elseif text == "=" then
+                if operation == "plus" then
+                    Result = tonumber(input) + firstNumber
+                    firstNumber = 0
+                    input = tostring(Result)
+                elseif operation == "minus" then
+                    Result = firstNumber - tonumber(input)
+                    firstNumber = 0
+                    input = tostring(Result)
+                elseif operation == "multiply" then
+                    Result = firstNumber * tonumber(input)
+                    firstNumber = 0
+                    input = tostring(Result)
+                elseif operation == "divide" then
+                    Result = firstNumber / tonumber(input)
+                    firstNumber = 0
+                    input = tostring(Result)
+                end
+            else
+            input = input .. buttonClick(button)
             end
-        input = input .. buttonClick(button)
-        end
+        else input = input .. buttonClick(button) end
         inputLabel:setText(input)
     end)
 end

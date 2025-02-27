@@ -32,16 +32,12 @@ local function buttonClick(button)
         input = input .. "0"
         button:setBackground(colors.white)
     elseif text == "+" then
-        input = input .. "+"
         button:setBackground(colors.white)
     elseif text == "-" then
-        input = input .. "-"
         button:setBackground(colors.white)
     elseif text == "*" then
-        input = input .. "*"
         button:setBackground(colors.white)
     elseif text == "/" then
-        input = input .. "/"
         button:setBackground(colors.white)
     elseif text == "=" then
         button:setBackground(colors.white)
