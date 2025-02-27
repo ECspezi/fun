@@ -25,6 +25,7 @@ for key, button in pairs(buttons) do
         if input ~= "" then
             if text == "C" then 
                 input = ""
+                firstNumber = 0
             elseif text == "+" then
                 firstNumber = firstNumber + tonumber(input)
                 input = ""
@@ -71,6 +72,7 @@ for key, button in pairs(buttons) do
             input = input .. buttonClick(button)
             end
         else input = input .. buttonClick(button) end
+        inputLabel:setText(input)
     end)
 end
 
