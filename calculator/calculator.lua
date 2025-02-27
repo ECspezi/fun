@@ -23,7 +23,7 @@ button1:onRelease(release)
 
 local inputFrame = main:addFrame()
    :setSize (49, 3)
-   :setPosition (2, 2)
+   :setPosition (2, 2) -- 2321231 fasd
    :setBackground(colors.black)
 
 local input = ""
