@@ -1,7 +1,7 @@
 local basalt = require("basalt")
 
 
-function Front()
+function Front(main)
 
     local button1 = main:addButton()
         :setText("1")

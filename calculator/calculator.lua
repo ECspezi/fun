@@ -1,5 +1,5 @@
 local basalt = require("basalt")
-local Front = require("front")
+local Buttons = require("buttons")
 
 local main = basalt.createFrame()
     :setBackground(colors.black)
@@ -10,7 +10,7 @@ local inputLabel = main:addLabel()
     :setForeground(colors.white)
     :setPosition(2, 2)
 
-local buttons = {Front(main)}
+local buttons = {Buttons(main)}
 
 local function numberButtonOnClick(button)
     button:setBackground(colors.lightGray)
