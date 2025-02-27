@@ -20,7 +20,7 @@ for key, button in pairs(buttons) do
         buttonClick(button)
         input = input .. buttonClick(button)
         inputLabel:setText(input)
-        if input == "" then input = "" end
+        if button:getText() == "C" then input = "" end
     end)
 end
 
