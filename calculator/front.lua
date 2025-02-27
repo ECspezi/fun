@@ -66,4 +66,11 @@ local button9 = main:addButton()
     :setForeground(colors.white)
     :setPosition(14, 16)
 
+local inputLabel = main.addLabel()
+    :setText("Input, please")
+    :setFontSize(2)
+    :setForeground(colors.gray)
+    :setBackground(colors.black)
+    :setPosition(2, 2)
+
 basalt.autoUpdate()
