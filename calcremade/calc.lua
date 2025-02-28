@@ -49,7 +49,6 @@ local function calculate() -- calculates final results
     elseif lastOperation == "/" then
         lastResult = lastNumber / tonumber(input)
     end
-    inputLabel:setText(tostring(lastResult))
     return lastResult
 end
 
@@ -93,7 +92,7 @@ for i, operator in pairs(operators) do
         :onClick(function()
             
             if lastNumber ~= 0 then
-                lastNumber = calculate()
+                lastNumber = calculate() -- выполняет калькуляцию еще раз, переделать. Без этой херни нельзя сделать 2+ операции за раз
             end
 
             if lastResult then
@@ -153,6 +152,7 @@ buttonEquals:setText("=")
         :onClick(function()
             buttonEquals:setBackground(colors.white)
             calculate()
+            inputLabel:setText(tostring(lastResult))
         end)
         :onRelease(function()
             buttonEquals:setBackground(colors.lightGray)
