@@ -49,6 +49,28 @@ for i = 1, 9 do
     if startX > 14 then startX = 2 end
 end
 
+local operatorsStartY = 4
+local operators = {"+", "-", "*", "/"}
+for i, operator in pairs(operators) do
+    local button = main:addButton()
+    
+    button:setText(operator)
+        :setSize(5, 3)
+        :setPosition(20, operatorsStartY)
+        :setBackground(colors.orange)
+        :onClick(function()
+            button:setBackground(colors.white)
+            lastOperation = operator
+            lastNumber = tonumber(input)
+            input = "0"
+            inputLabel:setText(tostring(lastNumber))
+        end)
+        :onRelease(function()
+            button:setBackground(colors.orange)
+        end)
+    operatorsStartY = operatorsStartY + 4
+end
+
 local button0 = main:addButton("numberButton0")
     
     button0:setText("0")
