@@ -41,7 +41,7 @@ local function calculate()
     elseif lastOperation == "/" then
         lastResult = lastNumber / tonumber(input)
     end
-    return tonumber(lastResult)
+    inputLabel:setText(tostring(lastResult))
     
 end
 
@@ -81,7 +81,7 @@ for i, operator in pairs(operators) do
         :setBackground(colors.orange)
         :onClick(function()
             
-            if lastNumber then 
+            if lastNumber ~= 0 then 
                 lastNumber = calculate()
             end
 
