@@ -8,6 +8,7 @@ for key, value in pairs(allMonitors) do
     local frame = basalt.addMonitor()
     frame:setMonitor(value)
 end
+-- 123
 
 
 basalt.autoUpdate()
