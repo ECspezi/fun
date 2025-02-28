@@ -26,7 +26,7 @@ local function clearCalculator()
     lastResult = nil
 end
 
-local function calculate()
+local function calculate() -- calculates final results
 
     if lastResult then
         lastNumber = lastResult
@@ -41,16 +41,19 @@ local function calculate()
     elseif lastOperation == "/" then
         lastResult = lastNumber / tonumber(input)
     end
+    if tostring(lastResult) == nil or tostring(lastResult) =~ tostring(lastResult) then
+        inputLabel:setText("Something went wrong :/")
+    end
     inputLabel:setText(tostring(lastResult))
     
 end
 
 -- creating 1-9 numpad
 
-local startX, startY = 2, 4
+local startX, startY = 2, 12
 for i = 1, 9 do
     if i > 3 and i <= 6 then startY = 8 end
-    if i > 6 then startY = 12 end
+    if i > 6 then startY = 4 end
     local button = main:addButton() -- <--- here
     
     button:setText(tostring(i))
@@ -70,9 +73,11 @@ for i = 1, 9 do
     if startX > 14 then startX = 2 end
 end
 
+-- creates operators buttons and actions
+
 local operatorsStartY = 4
 local operators = {"+", "-", "*", "/"}
-for i, operator in pairs(operators) do
+for i, operator in pairs(operators) do 
     local button = main:addButton()
     
     button:setText(operator)
@@ -81,7 +86,7 @@ for i, operator in pairs(operators) do
         :setBackground(colors.orange)
         :onClick(function()
             
-            if lastNumber ~= 0 then 
+            if lastNumber ~= 0 then -- if lastNumber is not 0, then it will replace lastNumber with the result of the last operation
                 lastNumber = calculate()
             end
 
@@ -98,7 +103,7 @@ for i, operator in pairs(operators) do
     operatorsStartY = operatorsStartY + 4
 end
 
-local button0 = main:addButton("numberButton0")
+local button0 = main:addButton() -- button zero
     
     button0:setText("0")
     :setSize(5, 3)
@@ -114,7 +119,7 @@ local button0 = main:addButton("numberButton0")
         button0:setBackground(colors.gray)
     end)
     
-local buttonC = main:addButton("ButtonC")
+local buttonC = main:addButton() -- button erase
 buttonC:setText("C")
     :setSize(5, 3)
     :setPosition(2, 16)
@@ -127,7 +132,7 @@ buttonC:setText("C")
         buttonC:setBackground(colors.lightGray)
     end)
 
-local buttonEquals = main:addButton("ButtonEquals")
+local buttonEquals = main:addButton() -- button equals
 buttonEquals:setText("=")
         :setSize(5, 3)
         :setPosition(14, 16)
