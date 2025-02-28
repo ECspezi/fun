@@ -94,6 +94,9 @@ for i, operator in pairs(operators) do
             if lastNumber ~= 0 then -- if lastNumber is not 0, then it will replace lastNumber with the result of the last operation
                 lastNumber = calculate()
             end
+            if lastResult then
+                input = lastResult
+            end
 
             button:setBackground(colors.white)
             lastOperation = operator
