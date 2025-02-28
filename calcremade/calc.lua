@@ -92,7 +92,7 @@ for i, operator in pairs(operators) do
         :onClick(function()
             
             if lastNumber ~= 0 then
-                lastNumber = calculate() -- выполняет калькуляцию еще раз, переделать. Без этой херни нельзя сделать 2+ операции за раз
+                lastNumber = calculate() 
             end
 
             if lastResult then
@@ -106,7 +106,7 @@ for i, operator in pairs(operators) do
             lastNumber = tonumber(input)
             
             input = "0"
-            inputLabel:setText(tostring(lastNumber))
+            inputLabel:setText(tostring(lastNumber)) 
         end)
         :onRelease(function()
             button:setBackground(colors.orange)
@@ -152,6 +152,7 @@ buttonEquals:setText("=")
         :onClick(function()
             buttonEquals:setBackground(colors.white)
             inputLabel:setText(tostring(calculate()))
+            lastNumber = 0
         end)
         :onRelease(function()
             buttonEquals:setBackground(colors.lightGray)
