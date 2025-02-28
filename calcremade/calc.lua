@@ -41,9 +41,6 @@ local function calculate() -- calculates final results
     elseif lastOperation == "/" then
         lastResult = lastNumber / tonumber(input)
     end
-    if tostring(lastResult) == nil or tostring(lastResult) =~ tostring(lastResult) then
-        inputLabel:setText("Something went wrong :/")
-    end
     inputLabel:setText(tostring(lastResult))
     
 end
