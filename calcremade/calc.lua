@@ -26,6 +26,13 @@ local function clearCalculator()
     lastResult = nil
 end
 
+function checkLastResult()
+    if lastResult ~= nil then 
+        input = lastResult 
+        lastResult = nil
+    end
+end
+
 local function calculate() -- calculates final results
 
     if lastResult then
@@ -57,7 +64,8 @@ for i = 1, 9 do
         :setSize(5, 3)
         :setPosition(startX, startY)
         :onClick(function()
-            button:setBackground(colors.white) -- this works because button initialised up there
+            checkLastResult()
+            button:setBackground(colors.white) -- this works because button initialised up there and i call it again in next string (for some reason its only way it worked)
             if input == "0" then input = tostring(i)
             else input = input .. tostring(i) end
             inputLabel:setText(input)
@@ -107,6 +115,7 @@ local button0 = main:addButton() -- button zero
     :setPosition(8, 16)
     :setBackground(colors.gray)
     :onClick(function()
+        checkLastResult()
         button0:setBackground(colors.white)
         if input == "0" then
         else input = input .. "0" end
