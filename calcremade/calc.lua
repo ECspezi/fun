@@ -12,6 +12,7 @@ local main = basalt.createFrame()
 local input = "0"
 local lastOperation = ""
 local lastNumber = 0
+local lastResult = nil
 
 local inputLabel = main:addLabel()
     :setPosition(2, 2)
@@ -22,6 +23,27 @@ local function clearCalculator()
     lastOperation = ""
     lastNumber = 0
     inputLabel:setText(input)
+    lastResult = nil
+end
+
+local function calculate()
+
+    if lastResult then
+        lastNumber = lastResult
+    end
+
+    if lastOperation == "+" then
+        lastResult = lastNumber + tonumber(input)
+    elseif lastOperation == "-" then
+        lastResult = lastNumber - tonumber(input)
+    elseif lastOperation == "*" then
+        lastResult = lastNumber * tonumber(input)
+    elseif lastOperation == "/" then
+        lastResult = lastNumber / tonumber(input)
+    end
+    input = tostring(lastResult)
+    inputLabel:setText(input)
+    
 end
 
 -- creating 1-9 numpad
@@ -30,7 +52,7 @@ local startX, startY = 2, 4
 for i = 1, 9 do
     if i > 3 and i <= 6 then startY = 8 end
     if i > 6 then startY = 12 end
-    local button = main:addButton("numberButton" .. i) -- <--- here
+    local button = main:addButton() -- <--- here
     
     button:setText(tostring(i))
         :setSize(5, 3)
@@ -62,6 +84,7 @@ for i, operator in pairs(operators) do
             button:setBackground(colors.white)
             lastOperation = operator
             lastNumber = tonumber(input)
+            calculate()
             input = "0"
             inputLabel:setText(tostring(lastNumber))
         end)
