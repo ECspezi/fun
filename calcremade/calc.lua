@@ -96,6 +96,7 @@ for i, operator in pairs(operators) do
             end
             if lastResult then
                 input = lastResult
+                lastResult = nil
             end
 
             button:setBackground(colors.white)
