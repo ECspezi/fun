@@ -28,7 +28,7 @@ end
 
 function checkLastResult()
     if lastResult ~= nil then 
-        input = lastResult 
+        input = lastResult
         lastResult = nil
     end
 end
