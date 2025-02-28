@@ -41,8 +41,7 @@ local function calculate()
     elseif lastOperation == "/" then
         lastResult = lastNumber / tonumber(input)
     end
-    input = tostring(lastResult)
-    inputLabel:setText(input)
+    return tonumber(lastResult)
     
 end
 
@@ -81,10 +80,15 @@ for i, operator in pairs(operators) do
         :setPosition(20, operatorsStartY)
         :setBackground(colors.orange)
         :onClick(function()
+            
+            if lastNumber then 
+                lastNumber = calculate()
+            end
+
             button:setBackground(colors.white)
             lastOperation = operator
             lastNumber = tonumber(input)
-            calculate()
+            
             input = "0"
             inputLabel:setText(tostring(lastNumber))
         end)
@@ -130,7 +134,7 @@ buttonEquals:setText("=")
         :setBackground(colors.lightGray)
         :onClick(function()
             buttonEquals:setBackground(colors.white)
-            -- make logic for equals button
+            calculate()
         end)
         :onRelease(function()
             buttonEquals:setBackground(colors.lightGray)
