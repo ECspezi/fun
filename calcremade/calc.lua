@@ -14,6 +14,7 @@ local lastOperation = ""
 local lastNumber = 0
 local lastResult = nil
 
+
 local inputLabel = main:addLabel()
     :setPosition(2, 2)
     :setText(input)
@@ -91,15 +92,13 @@ for i, operator in pairs(operators) do
         :setBackground(colors.orange)
         :onClick(function()
             
-            if lastNumber ~= 0 then -- if lastNumber is not 0, then it will replace lastNumber with the result of the last operation
-                lastNumber = calculate()
-            end
             if lastResult then
                 input = lastResult
                 lastResult = nil
             end
 
             button:setBackground(colors.white)
+
             lastOperation = operator
             lastNumber = tonumber(input)
             
