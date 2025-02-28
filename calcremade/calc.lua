@@ -9,7 +9,7 @@ basalt.setTheme({
 
 local main = basalt.createFrame()
 
-local input = ""
+local input = "0"
 local lastOperation = ""
 local lastNumber = 0
 
@@ -84,6 +84,7 @@ buttonEquals:setText("=")
         :setPosition(14, 16)
         :setBackground(colors.lightGray)
         :onClick(function()
+            buttonEquals:setBackground(colors.white)
             -- make logic for equals button
         end)
         :onRelease(function()
