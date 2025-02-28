@@ -50,7 +50,7 @@ local function calculate() -- calculates final results
         lastResult = lastNumber / tonumber(input)
     end
     inputLabel:setText(tostring(lastResult))
-    
+    return lastResult
 end
 
 -- creating 1-9 numpad
@@ -92,6 +92,10 @@ for i, operator in pairs(operators) do
         :setBackground(colors.orange)
         :onClick(function()
             
+            if lastNumber ~= 0 then
+                lastNumber = calculate()
+            end
+
             if lastResult then
                 input = lastResult
                 lastResult = nil
